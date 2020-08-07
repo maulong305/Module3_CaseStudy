@@ -20,7 +20,10 @@
 </div>
 <div align="center">
     <table border="1" cellpadding="5">
-        <caption><h2>Show Product</h2></caption>
+        <caption><h2>Show User</h2></caption>
+        <c:if test="${user != null}">
+            <input type="hidden" name="id" value="<c:out value='${user.id}' />"/>
+        </c:if>
         <tr>
             <th>ID</th>
             <th>UserName</th>

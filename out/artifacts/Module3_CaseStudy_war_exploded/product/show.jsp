@@ -21,23 +21,24 @@
 <div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>Show Product</h2></caption>
+        <c:if test="${product != null}">
+            <input type="hidden" name="id" value="<c:out value='${product.id}' />"/>
+        </c:if>
         <tr>
             <th>ID</th>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Phone</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
             <th>Actions</th>
         </tr>
             <tr>
-                <td>${user.id}</td>
-                <td>${user.userName}</td>
-                <td>${user.email}</td>
-                <td>${user.password}</td>
-                <td>${user.phone}</td>
+                <td>${product.id}</td>
+                <td>${product.name}</td>
+                <td>${product.brand}</td>
+                <td>${product.price}</td>
                 <td>
-                    <a href="/user?action=edit&id=${user.id}">Edit</a>
-                    <a href="/user?action=delete&id=${user.id}">Delete</a>
+                    <a href="/product?action=edit&id=${product.id}">Edit</a>
+                    <a href="/product?action=delete&id=${product.id}">Delete</a>
                 </td>
             </tr>
     </table>

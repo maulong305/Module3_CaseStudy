@@ -51,7 +51,7 @@ public class UserDAO implements IUserDAO {
         User user = null;
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from product where id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from user where id = ?");
 
             preparedStatement.setInt(1, id);
 
@@ -119,6 +119,7 @@ public class UserDAO implements IUserDAO {
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getPhone());
+            preparedStatement.setInt(5, user.getId());
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
 

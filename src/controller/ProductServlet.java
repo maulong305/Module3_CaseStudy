@@ -145,8 +145,8 @@ public class ProductServlet extends HttpServlet {
     private void showProduct(HttpServletRequest request, HttpServletResponse response){
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.selectProduct(id);
-        request.setAttribute("product", product);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/show.jsp");
+        request.setAttribute("product", product);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

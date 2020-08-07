@@ -101,8 +101,8 @@ public class UserServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        User existingUser = userDAO.selectUser(id);
+        String id = (request.getParameter("id"));
+        User existingUser = userDAO.selectUser(Integer.parseInt(id));
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         request.setAttribute("user", existingUser);
         dispatcher.forward(request, response);
@@ -128,7 +128,7 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
-        User newUser = new User(userName, email, password, phone);
+        User newUser = new User(id, userName, email, password, phone);
 
         userDAO.updateUser(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
@@ -149,12 +149,13 @@ public class UserServlet extends HttpServlet {
     private void showUser(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         User user = userDAO.selectUser(id);
-        request.setAttribute("user", user);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/show.jsp");
+        request.setAttribute("user", user);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
+
 }
