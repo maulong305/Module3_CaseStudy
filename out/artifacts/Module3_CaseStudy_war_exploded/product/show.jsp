@@ -12,10 +12,10 @@
 </head>
 <body>
 <div style="text-align: center;">
-    <h1>User Management</h1>
+    <h1>Product Management</h1>
 
     <h2>
-        <a href="/product?action=create">Add New User</a>
+        <a href="/product?action=create">Add New Product</a>
     </h2>
 </div>
 <div align="center">

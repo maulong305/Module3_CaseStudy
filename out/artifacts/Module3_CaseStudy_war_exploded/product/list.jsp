@@ -32,6 +32,7 @@
         <c:forEach var="product" items="${listProduct}">
             <tr>
                 <td><a href="/product?action=show&id=${product.id}"><c:out value="${product.id}"/></a></td>
+<%--                <td><a href="/product?action=show&nid=${product.id}"><c:out value="${product.name}"/></a></td>--%>
                 <td><c:out value="${product.name}"/></td>
                 <td><c:out value="${product.brand}"/></td>
                 <td><c:out value="${product.price}"/></td>

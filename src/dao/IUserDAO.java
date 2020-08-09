@@ -10,6 +10,9 @@ public interface IUserDAO {
 
     public User selectUser(int id);
 
+    public User selectUserByName(String userName);
+
+
     public List<User> selectAllUser();
 
     public boolean deleteUser(int id) throws SQLException;

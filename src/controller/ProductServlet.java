@@ -75,11 +75,6 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
-    }
-
     private void listProduct(HttpServletRequest request, HttpServletResponse response) {
         List<Product> listProduct = productDAO.selectAllProduct();
         request.setAttribute("listProduct", listProduct );
@@ -113,7 +108,6 @@ public class ProductServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         Product newProduct = new Product(name, brand, price);
         productDAO.insertProduct(newProduct);
-        System.out.println(name);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/create.jsp");
         dispatcher.forward(request, response);
     }

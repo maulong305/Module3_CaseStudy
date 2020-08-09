@@ -49,7 +49,8 @@ public class ProductDAO implements IProductDAO {
         Product product = null;
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from product where id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select * from product where id = ?");
 
             preparedStatement.setInt(1, id);
 
@@ -100,7 +101,8 @@ public class ProductDAO implements IProductDAO {
         List<Product> productList = new ArrayList<>();
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from product");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select * from product");
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -138,7 +140,8 @@ public class ProductDAO implements IProductDAO {
         boolean rowUpdated = false;
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("update product set name = ?, brand= ?, price =? where id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "update product set name = ?, brand= ?, price =? where id = ?;");
 
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getBrand());
