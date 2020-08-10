@@ -31,11 +31,12 @@ public class ProductDAO implements IProductDAO {
 
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into product (name, brand, price) VALUES (?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into product (name, brand, price, imgItem) VALUES (?,?,?,?)");
 
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getBrand());
             preparedStatement.setInt(3, product.getPrice());
+            preparedStatement.setString(4, product.getImgItem());
 
             preparedStatement.executeUpdate();
 
@@ -60,7 +61,8 @@ public class ProductDAO implements IProductDAO {
                 String name = rs.getString("name");
                 String brand = rs.getString("brand");
                 int price = rs.getInt("price");
-                product = new Product(id, name, brand, price);
+                String imgItem = rs.getString("imgItem");
+                product = new Product(id, name, brand, price, imgItem);
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -68,33 +70,6 @@ public class ProductDAO implements IProductDAO {
         return product;
     }
 
-    @Override
-    public Product selectLastProduct() {
-        Product product = null;
-        try {
-            Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from product order by id DESC limit 1");
-
-            preparedStatement.setString(1, product.getName());
-            preparedStatement.setString(2, product.getBrand());
-            preparedStatement.setInt(3, product.getPrice());
-
-            preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String brand = rs.getString("brand");
-                int price = rs.getInt("price");
-                product = new Product(id, name, brand, price);
-            }
-
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return product ;
-    }
 
     @Override
     public List<Product> selectAllProduct() {
@@ -111,7 +86,8 @@ public class ProductDAO implements IProductDAO {
                 String name = rs.getString("name");
                 String brand = rs.getString("brand");
                 int price = rs.getInt("price");
-                Product product = new Product(id, name, brand, price);
+                String imgItem = rs.getString("imgItem");
+                Product product = new Product(id, name, brand, price, imgItem);
                 productList.add(product);
             }
         }catch (SQLException e) {
@@ -141,12 +117,13 @@ public class ProductDAO implements IProductDAO {
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "update product set name = ?, brand= ?, price =? where id = ?;");
+                    "update product set name = ?, brand= ?, price =? imgItem = ? where id = ?;");
 
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getBrand());
             preparedStatement.setInt(3, product.getPrice());
-            preparedStatement.setInt(4, product.getId());
+            preparedStatement.setString(4, product.getImgItem());
+            preparedStatement.setInt(5, product.getId());
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
 

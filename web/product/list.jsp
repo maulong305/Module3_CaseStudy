@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maulo
@@ -6,10 +5,17 @@
   Time: 11:26 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Product List</title>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
 </head>
 <body>
 <div style="text-align: center;">
@@ -27,6 +33,7 @@
             <th>Name</th>
             <th>Brand</th>
             <th>Price</th>
+            <th>ImgItem</th>
             <th>Actions</th>
         </tr>
         <c:forEach var="product" items="${listProduct}">
@@ -36,6 +43,7 @@
                 <td><c:out value="${product.name}"/></td>
                 <td><c:out value="${product.brand}"/></td>
                 <td><c:out value="${product.price}"/></td>
+                <td><c:out value="${product.imgItem}"/></td>
                 <td>
                     <a href="/product?action=edit&id=${product.id}">Edit</a>
                     <a href="/product?action=delete&id=${product.id}">Delete</a>

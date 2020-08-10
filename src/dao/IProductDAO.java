@@ -10,8 +10,6 @@ public interface IProductDAO {
 
     public Product selectProduct(int id);
 
-    public Product selectLastProduct();
-
     public List<Product> selectAllProduct();
 
     public boolean deleteProduct(int id) throws SQLException;

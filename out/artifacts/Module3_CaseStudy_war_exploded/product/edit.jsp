@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maulo
@@ -6,17 +5,24 @@
   Time: 2:05 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
     <title>Product Management Application</title>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
 </head>
 <body>
 <div style="text-align: center;">
     <h1>Product Management</h1>
     <h2>
-        <a href="/product">List All Product</a>
+        <a href="/product">Home</a>
     </h2>
 </div>
 <div align="center">
@@ -51,6 +57,15 @@
                 <td>
                     <input type="text" name="price" size="15"
                            value="${product.price}"
+                    />
+                </td>
+            </tr>
+
+            <tr>
+                <th>ImgItem:</th>
+                <td>
+                    <input type="text" name="imgItem" size="15"
+                           value="${product.imgItem}"
                     />
                 </td>
             </tr>

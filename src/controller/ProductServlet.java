@@ -66,6 +66,9 @@ public class ProductServlet extends HttpServlet {
                 case "show":
                     showProduct(request, response);
                     break;
+                case "view":
+                    showProductDetail(request, response);
+                    break;
                 default:
                     listProduct(request, response);
                     break;
@@ -75,10 +78,12 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+
+
     private void listProduct(HttpServletRequest request, HttpServletResponse response) {
         List<Product> listProduct = productDAO.selectAllProduct();
         request.setAttribute("listProduct", listProduct );
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -106,7 +111,9 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         int price = Integer.parseInt(request.getParameter("price"));
-        Product newProduct = new Product(name, brand, price);
+        String imgItem = request.getParameter("imgItem");
+
+        Product newProduct = new Product(name, brand, price, imgItem);
         productDAO.insertProduct(newProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/create.jsp");
         dispatcher.forward(request, response);
@@ -118,8 +125,9 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         int price  = Integer.parseInt(request.getParameter("price"));
+        String imgItem = request.getParameter("imgItem");
 
-        Product book = new Product(id, name, brand, price);
+        Product book = new Product(id, name, brand, price, imgItem);
         productDAO.updateProduct(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/edit.jsp");
         dispatcher.forward(request, response);
@@ -147,5 +155,19 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    private void showProductDetail(HttpServletRequest request, HttpServletResponse response) {
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = productDAO.selectProduct(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/showdetail.jsp");
+        request.setAttribute("product", product);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
