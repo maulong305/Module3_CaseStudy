@@ -17,6 +17,10 @@
 
     <h2>
         <a href="/user?action=create">Add New User</a>
+
+        <br>
+        <br>
+        <a href="/product">Back Home</a>
     </h2>
 </div>
 <div align="center">
@@ -44,6 +48,7 @@
             </tr>
         </c:forEach>
     </table>
+
 </div>
 </body>
 </html>

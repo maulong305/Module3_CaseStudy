@@ -137,7 +137,8 @@ public class UserDAO implements IUserDAO {
         boolean rowUpdated = false;
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("update user set userName = ?, email = ?, password =?, phone = ? where id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "update user set userName = ?, email = ?, password =?, phone = ? where id = ?;");
 
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getEmail());

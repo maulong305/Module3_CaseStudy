@@ -131,8 +131,10 @@ public class UserServlet extends HttpServlet {
         User newUser = new User(id, userName, email, password, phone);
 
         userDAO.updateUser(newUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
+//        dispatcher.forward(request, response);
+        response.sendRedirect("/user");
+
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)

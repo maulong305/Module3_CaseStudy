@@ -68,7 +68,7 @@
     <button>Add new Product</button>
 </a>
 <a href="/user">
-    <button>User</button>
+    <button>User Management</button>
 </a>
 <header>
     <div class="collapse bg-dark" id="navbarHeader">

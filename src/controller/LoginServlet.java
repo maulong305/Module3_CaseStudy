@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             //setting cookie to expiry in 30 mins
             loginCookie.setMaxAge(30*60);
             response.addCookie(loginCookie);
-            response.sendRedirect("/");
+            response.sendRedirect("/product");
         }else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
             PrintWriter out= response.getWriter();

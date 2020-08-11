@@ -117,6 +117,8 @@ public class ProductServlet extends HttpServlet {
         productDAO.insertProduct(newProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/create.jsp");
         dispatcher.forward(request, response);
+//        response.sendRedirect("/product");
+
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response)
@@ -129,8 +131,10 @@ public class ProductServlet extends HttpServlet {
 
         Product book = new Product(id, name, brand, price, imgItem);
         productDAO.updateProduct(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/edit.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("product/edit.jsp");
+//        dispatcher.forward(request, response);
+        response.sendRedirect("/product");
+
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response)
@@ -140,8 +144,9 @@ public class ProductServlet extends HttpServlet {
 
         List<Product> listProduct = productDAO.selectAllProduct();
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/list.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/product");
+//        dispatcher.forward(request, response);
+response.sendRedirect("/product");
     }
 
     private void showProduct(HttpServletRequest request, HttpServletResponse response){

@@ -16,6 +16,9 @@
     <h1>User Management</h1>
     <h2>
         <a href="/user">List All User</a>
+        <br>
+        <br>
+        <a href="/product">Back Home</a>
     </h2>
 </div>
 <div align="center">

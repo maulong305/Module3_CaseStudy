@@ -117,7 +117,7 @@ public class ProductDAO implements IProductDAO {
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "update product set name = ?, brand= ?, price =? imgItem = ? where id = ?;");
+                    "update product set name = ?, brand= ?, price =?, imgItem = ? where id = ?;");
 
             preparedStatement.setString(1, product.getName());
             preparedStatement.setString(2, product.getBrand());

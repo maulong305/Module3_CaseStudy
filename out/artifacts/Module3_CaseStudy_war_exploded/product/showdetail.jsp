@@ -21,7 +21,7 @@
 <%--Header--%>
 <!--Content-->
 <div class="container-fluid">
-<div class="col-lg-3 col-md-4 mb-3">
+<div class="col-lg-6 col-md-3 mb-3">
     <div class="card h-10">
         <h1 style="color: #2A2A2A">${requestScope.product.name}</h1>
         <a href="product?action=detail&id=${product.id}">
@@ -48,9 +48,13 @@
     <a href="/cart?action=cart&id=${requestScope.product.id}">
         <button type="button" class="btn btn-primary" style="width: 100%; height: 60px; margin-right: 0">Add to Cart</button>
     </a>
-</div>
+    </div>
     <div>
         <a href="/cart?action=show&id=${requestScope.product.id}"><button type="button" class="btn btn-primary" style="width: 100%; height: 60px; margin-right: 0">Show Cart</button></a>
+    </div>
+    <br>
+    <div>
+        <a href="/product"><button type="button" class="btn btn-primary" style="width: 100%; height: 60px; margin-right: 0">Back Home</button></a>
     </div>
 </div>
 </div>
